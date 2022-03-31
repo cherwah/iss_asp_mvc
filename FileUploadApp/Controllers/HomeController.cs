@@ -69,6 +69,35 @@ namespace FileUploadApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult DeletePhoto([FromBody] ClientReq req)
+        {
+            Session session = ValidateSession();
+            
+            if (session != null && req.PhotoId != null)
+            {
+                // query database based on primary key of photo
+                Photo photo = dbContext.Photos.FirstOrDefault(x => 
+                    x.Id.ToString() == req.PhotoId);
+                
+                if (photo != null)  // found the record in our database
+                {
+                    if (DeleteFile(photo.Filename))
+                    {
+                        // remove the database record
+                        dbContext.Remove(photo);
+
+                        // must remember to commit for changes to take place
+                        dbContext.SaveChanges();
+
+                        // informs user that delete is successful
+                        return Json(new { status = "success" });
+                    }
+                }
+            }
+
+            return Json(new { status = "fail" });
+        }
+
         // Resize and save the uploaded file into the filesystem
         private string SaveFile(IFormFile myfile) 
         {                                   
@@ -76,7 +105,7 @@ namespace FileUploadApp.Controllers
             {
                 // create a "uploads" directory if it does not exist
                 // the path should be "wwwroot/uploads"            
-                string path = Path.Combine(env.WebRootPath, uploadDir);
+                string path = Path.Combine(env.WebRootPath, UPLOAD_DIR);
                 if (! Directory.Exists(path)) 
                 {
                     Directory.CreateDirectory(path);
@@ -127,6 +156,20 @@ namespace FileUploadApp.Controllers
             
             // commit; without this, entry will not be saved
             dbContext.SaveChanges();    
+        }
+
+        private bool DeleteFile(string filename)
+        {
+            string path = Path.Combine(env.WebRootPath, UPLOAD_DIR);
+            string target = String.Format("{0}/{1}", path, filename);
+            
+            if (System.IO.File.Exists(target))
+            {
+                System.IO.File.Delete(target);
+                return true;
+            }
+
+            return false;
         }
 
         private Session ValidateSession()

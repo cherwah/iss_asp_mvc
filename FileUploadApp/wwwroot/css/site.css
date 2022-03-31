@@ -88,7 +88,7 @@ body {
 }
 
 table, td, th, tr {
-  border: 1px solid #0066cc;
+  border: 1px solid #efefef;
 }
 
 td, th {
@@ -103,5 +103,9 @@ td, th {
 }
 
 .my_img {
-  border: 1px solid #efefef;
+  cursor: pointer;
+}
+
+.hilite {
+  background-color: #fefefe;
 }

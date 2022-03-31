@@ -19,15 +19,49 @@
 
 <p></p>
 
-<div style="text-align:center">
+<table width="100%">
+<table align="center">
 
 @{
+    bool opened = false;
+    int i;
 
-    foreach (Photo photo in photos)
+    for (i = 0; i<photos.Count; i++)
     {
-        <img class="my_img" src="@uploadDir/@photo.Filename"/>
+        @* 3 images per row *@
+        if (i % 3 == 0)
+        {
+            @* only close if we are inside one *@
+            if (opened)
+            {
+                @:</tr>
+            }
+
+            @:</tr>
+            opened = true;
+        }
+
+        Photo photo = photos[i];
+
+        @:<td width="300px" height="300px">
+            <img id="@photo.Id" class="my_img" src="@uploadDir/@photo.Filename" />
+        @:</td>
     }
 
+    if (photos.Count > 0) 
+    {
+        @* padding if not enough images to form an entire row *@
+        while (i % 3 != 0)
+        {
+            <td width="300px" height="300px"></td>
+            i++;
+        }
+
+        @* close off final row *@
+        @:</tr>        
+    }
 }
 
-</div>
+</table>
+</table>
+
