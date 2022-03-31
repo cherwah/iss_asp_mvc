@@ -5,17 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 using FileUploadApp.Models;
+
 
 namespace FileUploadApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IWebHostEnvironment env;
+        private readonly MyDbContext dbContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        // dependency-injecting both web environment and database context
+        // into our constructor
+        public HomeController(IWebHostEnvironment env, MyDbContext dbContext)
         {
-            _logger = logger;
+            this.env = env;
+            this.dbContext = dbContext;
         }
 
         public IActionResult Index()
@@ -23,9 +31,30 @@ namespace FileUploadApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult UploadFile(IFormFile myfile)
         {
-            return View();
+            SaveFile(myfile);
+
+            return View("Index");
+        }
+
+        private void SaveFile(IFormFile myfile) 
+        {           
+            if (myfile != null)
+            {
+                string path = Path.Combine(env.WebRootPath, "uploads");
+                if (! Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                string filename = Path.GetFileName(myfile.FileName);
+                using (FileStream stream = new FileStream(
+                    Path.Combine(path, filename), FileMode.Create))
+                {
+                    myfile.CopyTo(stream);
+                }
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

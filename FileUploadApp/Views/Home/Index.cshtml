@@ -1,8 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Gallery";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div style="text-align:center">
+    <div class="file-uploader">
+        <form method="post" enctype="multipart/form-data" action="/Home/UploadFile">
+            <!-- only accepts images for uploading -->
+            <input type="file" name="myfile" accept="image/*">
+            <input type="submit">
+        </form>
+    </div>
 </div>
+

@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using FileUploadApp.Models;
+
 
 /*
     Objective: 
@@ -43,10 +47,17 @@ namespace FileUploadApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // inject our database context into DI container
+            services.AddDbContext<MyDbContext>(opt =>
+                opt.UseLazyLoadingProxies().UseSqlServer(
+                    Configuration.GetConnectionString("db_conn"))
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+            [FromServices] MyDbContext dbContext)   // dependency-injecting our database context 
         {
             if (env.IsDevelopment())
             {
@@ -69,8 +80,17 @@ namespace FileUploadApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
             });
+
+            // if database cannot be connected, then we create it
+            // then seed some data in the newly-created database
+            if (!dbContext.Database.CanConnect()) {
+                dbContext.Database.EnsureCreated();
+
+                DbUtil du = new DbUtil(dbContext);
+                du.Seed();
+            }
         }
     }
 }

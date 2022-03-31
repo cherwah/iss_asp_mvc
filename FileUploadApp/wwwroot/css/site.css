@@ -69,3 +69,35 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* My Styles */
+/* ----------------------------------------------------*/
+.my_tbl {
+  display: inline-block;
+  padding: 0.5em;
+  border: 2px solid #5499c7;    
+}
+
+.my_row {
+  display: table-row;
+}
+
+.my_cell {
+  display: table-cell;
+  padding: 0.1em;
+}
+
+table, td, th, tr {
+  border: 1px solid #0066cc;
+}
+
+td, th {
+  text-align: center;
+  padding: 8px;
+}
+
+.file-uploader {
+  padding: 20px; 
+  border: 1px solid #cccccc;
+  display: inline-block;
+}

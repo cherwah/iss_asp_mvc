@@ -15624,8 +15624,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/Views/Home/Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "/Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/Views/Login/Index.cshtml",
+      "TargetPath": "Views\\Login\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
