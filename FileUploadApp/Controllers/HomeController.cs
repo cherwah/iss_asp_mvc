@@ -121,15 +121,18 @@ namespace FileUploadApp.Controllers
                 // resize image using 3rd-party library - ImageSharp
                 using (Image image = Image.Load(myfile.OpenReadStream())) 
                 {
+                    // using a fixed 300x300 box for each image displayed to user
                     int newWidth = 300;
                     int newHeight = 300;
 
                     if (image.Width > image.Height)
                     {
+                        // set width to 300, vary the height accordingly
                         newHeight = (newWidth * image.Height) / image.Width;
                     }                        
                     else 
                     {
+                        // set height to 300, vary the width accordingly
                         newWidth = (newHeight * image.Width) / image.Height;
                     }                        
 
