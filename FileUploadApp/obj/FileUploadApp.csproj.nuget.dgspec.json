@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/FileUploadApp.csproj": {}
+  },
+  "projects": {
+    "/Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/FileUploadApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/FileUploadApp.csproj",
+        "projectName": "FileUploadApp",
+        "projectPath": "/Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/FileUploadApp.csproj",
+        "packagesPath": "/Users/cherwah/.nuget/packages/",
+        "outputPath": "/Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/cherwah/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.406/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
