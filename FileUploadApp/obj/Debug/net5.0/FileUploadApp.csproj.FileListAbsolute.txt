@@ -69,3 +69,4 @@
 /Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/obj/Debug/net5.0/FileUploadApp.pdb
 /Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/obj/Debug/net5.0/FileUploadApp.genruntimeconfig.cache
 /Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/obj/Debug/net5.0/Razor/Views/Login/Index.cshtml.g.cs
+/Users/cherwah/git_repos/iss_asp_mvc/FileUploadApp/bin/Debug/net5.0/SixLabors.ImageSharp.dll

@@ -1,5 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Gallery";
+
+    // get data passed in from controller
+    List<Photo> photos = ViewBag.photos;
+    string uploadDir = ViewBag.uploadDir;
 }
 
 
@@ -13,3 +17,17 @@
     </div>
 </div>
 
+<p></p>
+
+<div style="text-align:center">
+
+@{
+
+    foreach (Photo photo in photos)
+    {
+        <img class="my_img" src="@uploadDir/@photo.Filename"/>
+    }
+
+}
+
+</div>

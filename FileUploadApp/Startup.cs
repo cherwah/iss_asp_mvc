@@ -26,6 +26,8 @@ using FileUploadApp.Models;
         - dotnet add package Microsoft.EntityFrameworkCore --version 5.0.10
         - dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.10
         - dotnet add package Microsoft.EntityFrameworkCore.Proxies --version 5.0.10
+        - dotnet add package SixLabors.ImageSharp 
+        
 
     Using SQL Server 2019 docker image:
         1. install Docker Desktop

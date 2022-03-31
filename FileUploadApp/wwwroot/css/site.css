@@ -101,3 +101,7 @@ td, th {
   border: 1px solid #cccccc;
   display: inline-block;
 }
+
+.my_img {
+  border: 1px solid #efefef;
+}
