@@ -81,6 +81,7 @@ namespace FileUploadApp.Controllers
                 
                 if (photo != null)  // found the record in our database
                 {
+                    // delete the photo from the local filesystem
                     if (DeleteFile(photo.Filename))
                     {
                         // remove the database record
