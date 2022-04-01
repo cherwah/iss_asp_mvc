@@ -43,7 +43,7 @@ namespace FileUploadApp.Controllers
             // get all photos associated with this user
             List<Photo> photos = dbContext.Photos.Where(x => 
                                     x.User == session.User).ToList();
-            
+                    
             // pass data to View via the ViewBag object
             ViewBag.photos = photos;
             ViewBag.uploadDir = "../" + UPLOAD_DIR;            
