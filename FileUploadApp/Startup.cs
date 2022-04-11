@@ -22,7 +22,7 @@ using FileUploadApp.Models;
         Project is created using dotnet-cli with cmd:
             - dotnet new mvc --name FileUploadApp
 
-    Packages:
+    Required Packages:
         - dotnet add package Microsoft.EntityFrameworkCore --version 5.0.10
         - dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 5.0.10
         - dotnet add package Microsoft.EntityFrameworkCore.Proxies --version 5.0.10
@@ -31,7 +31,7 @@ using FileUploadApp.Models;
     If creating project from scratch using 'dotnet new mvc' command for first time, need to create self-signed development certificate:
         - dotnet dev-certs https --trust
 
-    Using SQL Server 2019 docker image:
+    Using SQL Server 2019 docker image on Mac OSX:
         1. install Docker Desktop
         2. docker run -d --name sql_server -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=SQLServer@2019!' -p 1433:1433 mcr.microsoft.com/mssql/server:2019-latest
 */
