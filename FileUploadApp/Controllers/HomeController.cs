@@ -46,6 +46,10 @@ namespace FileUploadApp.Controllers
                     
             // pass data to View via the ViewBag object
             ViewBag.photos = photos;
+
+            // our WebRoot = "localhost:<port>/", and our incoming request 
+            // is localhost:<port>/Home/", so we are appending "../uploads" 
+            // to the incoming request when fetching images withg "<img src="
             ViewBag.uploadDir = "../" + UPLOAD_DIR;            
 
             // return composed View to user

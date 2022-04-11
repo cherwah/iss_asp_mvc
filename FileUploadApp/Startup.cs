@@ -28,6 +28,8 @@ using FileUploadApp.Models;
         - dotnet add package Microsoft.EntityFrameworkCore.Proxies --version 5.0.10
         - dotnet add package SixLabors.ImageSharp 
         
+    If creating project from scratch using 'dotnet new mvc' command for first time, need to create self-signed development certificate:
+        - dotnet dev-certs https --trust
 
     Using SQL Server 2019 docker image:
         1. install Docker Desktop
